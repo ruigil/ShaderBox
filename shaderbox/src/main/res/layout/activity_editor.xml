@@ -1,0 +1,284 @@
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    <io.oceanos.shaderbox.opengl.ShaderGLView
+            android:id="@+id/shader_view"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/action_chars"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+
+    <ScrollView
+            android:id="@+id/scroll"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            android:layout_above="@+id/action_chars"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true">
+        <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:fillViewport="true"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_margin="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <io.oceanos.shaderbox.ShaderEditor
+                            android:id="@+id/editor"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:padding="0dp"
+                            android:fontFamily="sans-serif-light"
+                            android:typeface="monospace"
+                            android:gravity="top"
+                            android:imeOptions="flagNoExtractUi"
+                            android:textSize="12sp"
+                            android:textColor="@color/foreground"
+                            android:background="@color/background"
+                            android:inputType="textNoSuggestions|textMultiLine"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+    <HorizontalScrollView
+            android:id="@+id/action_chars"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentBottom="true">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_rpo"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="(" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_rpc"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text=")" />
+            </FrameLayout>
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_cpo"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="{" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_cpc"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="}" />
+            </FrameLayout>
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_dotcoma"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text=";" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_coma"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="," />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_dot"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="." />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_div"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="/" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_times"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="*" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_equal"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="=" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_plus"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="+" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_minus"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="-" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_spo"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="[" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_spc"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="]" />
+            </FrameLayout>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         style="?android:actionButtonStyle"
+                         android:id="@+id/action_tab"
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1">
+
+                <TextView style="@style/Widget.ShaderActionChar.Char"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center_vertical"
+                          android:text="Tab" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+</RelativeLayout>
+
+
+
+

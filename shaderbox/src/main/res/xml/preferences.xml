@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_editor"
+        android:key="pref_key_editor">
+
+        <ListPreference
+                android:key="pref_editor_text_size"
+                android:title="@string/pref_editor_text_size"
+                android:dialogTitle="@string/pref_editor_text_size"
+                android:entries="@array/pref_editor_text_size_entries"
+                android:entryValues="@array/pref_editor_text_size_values"
+                android:defaultValue="@string/pref_editor_text_size_default"/>
+        <ListPreference
+                android:key="pref_editor_opacity"
+                android:title="@string/pref_editor_opacity"
+                android:dialogTitle="@string/pref_editor_opacity"
+                android:entries="@array/pref_editor_opacity_entries"
+                android:entryValues="@array/pref_editor_opacity_values"
+                android:defaultValue="@string/pref_editor_opacity_default"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="@string/pref_compiler"
+            android:key="pref_key_compiler">
+        <CheckBoxPreference
+                android:title="@string/pref_compile_save"
+                android:defaultValue="true"
+                android:summary="@string/pref_compile_save_description"
+                android:key="pref_compile_rt"/>
+    </PreferenceCategory>
+</PreferenceScreen>

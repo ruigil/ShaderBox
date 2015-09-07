@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShaderBox</string>
+    <string name="action_new_shader" translatable="true">Novo Shader</string>
+    <string name="action_settings" translatable="true">Configurações</string>
+    <string name="action_share_shader" translatable="true">Partilhar Shader</string>
+</resources>

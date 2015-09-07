@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:divider="?android:attr/dividerVertical"
+    android:showDividers="middle"
+    android:dividerPadding="8dp">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 style="?android:actionButtonStyle"
+                 android:id="@+id/actionbar_fps"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1">
+
+        <TextView style="?android:actionBarTabTextStyle"
+                  android:id="@+id/text_fps"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:paddingStart="0dp"
+                  android:paddingEnd="0dp"
+                  android:gravity="center_vertical"
+                  android:text="@string/fps" />
+    </FrameLayout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 style="?android:actionButtonStyle"
+                 android:id="@+id/actionbar_view"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1">
+
+        <TextView style="?android:actionBarTabTextStyle"
+                  android:id="@+id/viewError"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:paddingEnd="4dp"
+                  android:drawableLeft="@drawable/ic_action_view"
+                  android:drawablePadding="4dp"
+                  android:gravity="center_vertical"
+                  android:text="@string/view" />
+    </FrameLayout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 style="?android:actionButtonStyle"
+                 android:id="@+id/actionbar_save"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1">
+
+        <TextView style="?android:actionBarTabTextStyle"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:paddingRight="4dp"
+                  android:drawableLeft="@drawable/ic_action_save"
+                  android:drawablePadding="4dp"
+                  android:gravity="center_vertical"
+                  android:text="@string/save" />
+    </FrameLayout>
+
+</LinearLayout>

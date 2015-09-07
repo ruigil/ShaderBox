@@ -1,0 +1,74 @@
+
+
+<resources>
+
+    <!-- Activity themes -->
+
+    <style name="Theme.Base" parent="android:Theme.Holo" />
+
+    <style name="Theme.ShaderBox" parent="Theme.Base" />
+
+    <style name="Widget" />
+
+    <style name="Widget.ShaderContentContainer">
+        <item name="android:paddingTop">@dimen/vertical_page_margin</item>
+        <item name="android:paddingBottom">@dimen/vertical_page_margin</item>
+        <item name="android:paddingLeft">@dimen/horizontal_page_margin</item>
+        <item name="android:paddingRight">@dimen/horizontal_page_margin</item>
+    </style>
+
+
+    <style name="Widget.ShaderDashboard.Grid" parent="Widget">
+        <item name="android:stretchMode">columnWidth</item>
+        <item name="android:columnWidth">100dp</item>
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:horizontalSpacing">2dp</item>
+        <item name="android:verticalSpacing">2dp</item>
+    </style>
+
+    <style name="Widget.ShaderDashboard.Card" parent="Widget">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="cardBackgroundColor">#424242</item>
+    </style>
+
+    <style name="Widget.ShaderDashboard.Item" parent="Widget">
+        <item name="android:background">#424242</item>
+    </style>
+
+    <style name="Widget.ShaderDashboard.Item.Title" parent="Widget">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:color">#ffffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">#88000000</item>
+    </style>
+
+    <style name="Widget.ShaderDashboard.Item.Thumbnail" parent="Widget">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="Widget.ShaderActionChar" parent="Widget">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">#ff212121</item>
+    </style>
+
+    <style name="Widget.ShaderActionChar.Char" parent="Widget">
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
