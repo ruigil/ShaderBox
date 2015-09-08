@@ -122,7 +122,7 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
         setSymbolListener(R.id.action_cpo, '{');
         setSymbolListener(R.id.action_cpc, '}');
         setSymbolListener(R.id.action_dotcoma, ';');
-        setSymbolListener(R.id.action_coma, '.');
+        setSymbolListener(R.id.action_coma, ',');
         setSymbolListener(R.id.action_dot, '.');
         setSymbolListener(R.id.action_plus, '+');
         setSymbolListener(R.id.action_minus, '-');
@@ -141,8 +141,8 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
         shaderView.setVRModeEnabled(false);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        int textSize = Integer.parseInt(prefs.getString("pref_editor_text_size", ""+R.string.pref_editor_text_size_default));
-        int opacity = Integer.parseInt(prefs.getString("pref_editor_opacity", "" + R.string.pref_editor_opacity_default));
+        int textSize = Integer.parseInt(prefs.getString("pref_editor_text_size", "12"));
+        int opacity = Integer.parseInt(prefs.getString("pref_editor_opacity","127"));
         editor = (ShaderEditor)findViewById(R.id.editor);
         editor.setTextSize(textSize);
         editor.setBackgroundColor(opacity << 24);

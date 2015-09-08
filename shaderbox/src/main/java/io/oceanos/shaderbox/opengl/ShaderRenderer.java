@@ -193,9 +193,6 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
 
     @Override
     public void onRendererShutdown() {
-        Log.i(MainActivity.TAG, "on renderer shutdown delete");
-        // somehow eGL gives me an error that there is no GL context here
-        // although it seems a nice place to clean up...
         GLES20.glDeleteProgram(programTextureId);
         checkGlError("glDeleteProgram");
         GLES20.glDeleteProgram(programShaderId);

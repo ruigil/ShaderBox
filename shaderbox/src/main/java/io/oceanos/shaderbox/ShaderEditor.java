@@ -308,15 +308,15 @@ public class ShaderEditor extends EditText  {
 
 		@Override
 		public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-			if ((end == 1) && (source.charAt(start) == '\n')) {
+			if ((end == 1) && (dstart != 0) && (source.charAt(start) == '\n')) {
 				StringBuilder ident = new StringBuilder();
 				// find the last line
-				int n=1;
-				while (dest.charAt(dstart-n) != '\n') n++;
+				int n=0;
+				while (dest.charAt(dstart-n) != '\n') ++n;
 				// copy previous ident and autoexpand comments
-				int s=1;
-				char c = dest.charAt(dstart-n+s++);
-				while (c == ' ' || c == '/') {
+				int s=0;
+				char c = dest.charAt(dstart-n);
+				while (c != '\n' && (c == ' ' || c == '/')) {
 					ident.append(c);
 					c = dest.charAt(dstart-n+s++);
 				}
