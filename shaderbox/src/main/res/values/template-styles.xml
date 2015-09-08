@@ -6,7 +6,8 @@
 
     <style name="Theme.Base" parent="android:Theme.Holo" />
 
-    <style name="Theme.ShaderBox" parent="Theme.Base" />
+    <style name="Theme.ShaderBox" parent="Theme.Base">
+    </style>
 
     <style name="Widget" />
 
@@ -58,7 +59,10 @@
 
     <style name="Widget.ShaderActionChar" parent="Widget">
         <item name="android:layout_margin">0dp</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
         <item name="android:background">#ff212121</item>
     </style>
 

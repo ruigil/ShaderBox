@@ -52,9 +52,7 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final LayoutInflater inflater = (LayoutInflater) getActionBar().getThemedContext()
-                .getSystemService(LAYOUT_INFLATER_SERVICE);
-
+        final LayoutInflater inflater = getLayoutInflater();
         final View customActionBarView = inflater.inflate(R.layout.actionbar_view_save, null);
         final View shaderActionView = customActionBarView.findViewById(R.id.actionbar_view);
         final View shaderActionSave = customActionBarView.findViewById(R.id.actionbar_save);
@@ -141,7 +139,7 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
         shaderView.setVRModeEnabled(false);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        int textSize = Integer.parseInt(prefs.getString("pref_editor_text_size", "12"));
+        int textSize = Integer.parseInt(prefs.getString("pref_editor_text_size", "14"));
         int opacity = Integer.parseInt(prefs.getString("pref_editor_opacity","127"));
         editor = (ShaderEditor)findViewById(R.id.editor);
         editor.setTextSize(textSize);

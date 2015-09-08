@@ -249,7 +249,7 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
     }
 
     public void compileRequest() {
-        CompileResult result = null;
+        CompileResult result;
         String fragmentShader = shader.getText();
         int program = compileShaderProgram(VERTEX_SHADER, fragmentShader);
 

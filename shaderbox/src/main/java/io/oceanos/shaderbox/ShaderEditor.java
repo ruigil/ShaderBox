@@ -77,22 +77,17 @@ public class ShaderEditor extends EditText  {
 	public ShaderEditor(Context context) {
 		super( context );
 		setFilters(new InputFilter[]{new IdentFilter()});
-		updateHighlight = new UpdateHighlight();
-		updateHighlight.start();
 	}
 
 	public ShaderEditor(Context context, AttributeSet attrs) {
-		super( context, attrs);
+		super(context, attrs);
 		setFilters(new InputFilter[]{new IdentFilter()});
-		updateHighlight = new UpdateHighlight();
-		updateHighlight.start();
 	}
 
 
 	public void setText(String text) {
 		SpannableStringBuilder ss = new SpannableStringBuilder(text);
 		ss.setSpan(new EditorLineNumberSpan(), 0, ss.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-		addTextChangedListener(updateHighlight);
 		super.setText(ss);
 	}
 
@@ -188,8 +183,6 @@ public class ShaderEditor extends EditText  {
 
 	public void setScrollView(final ScrollView scroll) {
 		this.scroll = scroll;
-		scroll.getViewTreeObserver().addOnScrollChangedListener(updateHighlight);
-		scroll.getViewTreeObserver().addOnGlobalLayoutListener(updateHighlight);
 	}
 
 	public void onResume() {
@@ -205,13 +198,14 @@ public class ShaderEditor extends EditText  {
 	}
 
 	public void onPause() {
-		if (scroll != null) {
-			scroll.getViewTreeObserver().removeOnScrollChangedListener(updateHighlight);
-			scroll.getViewTreeObserver().removeOnGlobalLayoutListener(updateHighlight);
+		if (updateHighlight != null) {
+			if (scroll != null) {
+				scroll.getViewTreeObserver().removeOnScrollChangedListener(updateHighlight);
+			}
+			removeTextChangedListener(updateHighlight);
+			updateHighlight.interrupt();
+			updateHighlight = null;
 		}
-		removeTextChangedListener(updateHighlight);
-		updateHighlight.interrupt();
-		updateHighlight = null;
 	}
 
 	private class UpdateHighlight extends Thread implements
@@ -276,6 +270,7 @@ public class ShaderEditor extends EditText  {
 
 		@Override
 		public void onGlobalLayout() {
+			Log.i(MainActivity.TAG,"on global layout notification");
 			final int start = getOffsetForPosition(0, scroll.getScrollY());
 			final int end = getOffsetForPosition(0, scroll.getScrollY() + scroll.getHeight());
 			previousStart = start;
@@ -287,7 +282,7 @@ public class ShaderEditor extends EditText  {
 					highlight(start, end);
 				}
 			});
-			scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+			scroll.getViewTreeObserver().removeOnGlobalLayoutListener(updateHighlight);
 			isLayoutReady = true;
 		}
 
@@ -308,14 +303,14 @@ public class ShaderEditor extends EditText  {
 
 		@Override
 		public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-			if ((end == 1) && (dstart != 0) && (source.charAt(start) == '\n')) {
+			if ((end == 1) && (dstart != 0) &&  (dend != dest.length()) && (source.charAt(start) == '\n')) {
 				StringBuilder ident = new StringBuilder();
 				// find the last line
-				int n=0;
+				int n=1;
 				while (dest.charAt(dstart-n) != '\n') ++n;
 				// copy previous ident and autoexpand comments
-				int s=0;
-				char c = dest.charAt(dstart-n);
+				int s=1;
+				char c = dest.charAt(dstart-n+s++);
 				while (c != '\n' && (c == ' ' || c == '/')) {
 					ident.append(c);
 					c = dest.charAt(dstart-n+s++);
