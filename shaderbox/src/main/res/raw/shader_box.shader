@@ -158,11 +158,11 @@ Ray setupRay() {
   vec2 uv = -1.0 + 2.0 * gl_FragCoord.xy / resolution;
   uv.x *= resolution.x / resolution.y;
 
-  vec3 right = camera[0].xyz;
-  vec3 up = camera[1].xyz;
-  vec3 forward = -camera[2].xyz;
+  vec3 right = eye[0].xyz;
+  vec3 up = eye[1].xyz;
+  vec3 forward = -eye[2].xyz;
 
-  vec3 eyep = camera[3].xyz;
+  vec3 eyep = eye[3].xyz;
 
   ray.position =  eyep + forward + ((right * uv.x) + (up * uv.y));
   ray.direction = normalize(ray.position - eyep);

@@ -31,9 +31,9 @@ public class CompileResult {
         this.isSuccess = result;
         Matcher matcher = errorPattern.matcher(error);
         if (matcher.find()) {
-            errorLine = Integer.parseInt(matcher.group(2))-1;
+            errorLine = Integer.parseInt(matcher.group(2));
             errorMsg = "("+errorLine+")"+matcher.group(3);
-        } else errorLine = 0;
+        } else errorLine = 1;
     }
 
     public boolean isSuccess() {
@@ -45,7 +45,7 @@ public class CompileResult {
     }
 
     public int getErrorLine() {
-        return this.errorLine;
+        return this.errorLine-1;
     }
 
 }
