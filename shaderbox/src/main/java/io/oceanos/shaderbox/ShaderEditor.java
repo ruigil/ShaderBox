@@ -270,7 +270,6 @@ public class ShaderEditor extends EditText  {
 
 		@Override
 		public void onGlobalLayout() {
-			Log.i(MainActivity.TAG,"on global layout notification");
 			final int start = getOffsetForPosition(0, scroll.getScrollY());
 			final int end = getOffsetForPosition(0, scroll.getScrollY() + scroll.getHeight());
 			previousStart = start;

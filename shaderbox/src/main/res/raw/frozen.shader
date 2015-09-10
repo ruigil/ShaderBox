@@ -6,6 +6,8 @@ uniform float time;
 uniform vec2 mouse;
 uniform vec2 resolution;
 
+uniform mat4 eye;
+
 // Frozen wasteland
 // https://www.shadertoy.com/view/Xls3D2
 // License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -191,9 +193,14 @@ void main()
     ro.y -= camHeight(ro.zx)-.4;
     mo.x += smoothstep(0.7,1.,sin(time*.35))*.5-1.5 - smoothstep(-.7,-1.,sin(time*.35))*.5;
 
-    vec3 eyedir = normalize(vec3(cos(mo.x),mo.y*2.+sin(time*.5)*0.1,sin(mo.x)));
-    vec3 rightdir = normalize(vec3(cos(mo.x+1.5708),0.,sin(mo.x+1.5708)));
-    vec3 updir = normalize(cross(rightdir,eyedir));
+    //vec3 eyedir = normalize(vec3(cos(mo.x),mo.y*2.+sin(time*.5)*0.1,sin(mo.x)));
+    //vec3 rightdir = normalize(vec3(cos(mo.x+1.5708),0.,sin(mo.x+1.5708)));
+    //vec3 updir = normalize(cross(rightdir,eyedir));
+
+    vec3 eyedir =  -eye[2].xyz;
+    vec3 rightdir = eye[0].xyz;
+    vec3 updir = eye[1].xyz;
+    ro += eye[3].xyz;
 	vec3 rd=normalize((p.x*rightdir+p.y*updir)*1.+eyedir);
 
     vec3 ligt = normalize( vec3(1.5, .9, -.5) );

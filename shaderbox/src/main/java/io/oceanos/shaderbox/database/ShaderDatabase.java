@@ -101,6 +101,16 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 				time
 		});
         database.execSQL(DATABASE_INSERT, new Object[]{
+                "Color Wave",
+                Shader.loadStringResource(context,R.raw.color_wave),
+                0,
+                1,
+                1,
+                Shader.loadByteResource(context,R.drawable.new_shader),
+                time,
+                time
+        });
+        database.execSQL(DATABASE_INSERT, new Object[]{
                 "Seascape",
 				Shader.loadStringResource(context,R.raw.seascape),
                 0,
@@ -133,16 +143,6 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 		database.execSQL(DATABASE_INSERT, new Object[]{
 				"Frozen Wasteland",
 				Shader.loadStringResource(context,R.raw.frozen),
-				0,
-				1,
-				2,
-				Shader.loadByteResource(context,R.drawable.new_shader),
-				time,
-				time
-		});
-		database.execSQL(DATABASE_INSERT, new Object[]{
-				"Amazing Box",
-				Shader.loadStringResource(context,R.raw.amazingbox),
 				0,
 				1,
 				4,

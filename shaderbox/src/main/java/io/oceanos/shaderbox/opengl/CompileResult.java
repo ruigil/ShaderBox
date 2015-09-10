@@ -24,15 +24,15 @@ public class CompileResult {
     boolean isSuccess = true;
     // ERROR: 0:35: Too many arguments to constructor of 'vec3'
     Pattern errorPattern = Pattern.compile("ERROR:\\s(\\d+):(\\d+):(.*)");
-    String error = "";
+    String errorMsg = "";
     int errorLine = 0;
 
     public CompileResult(boolean result, String error) {
         this.isSuccess = result;
         Matcher matcher = errorPattern.matcher(error);
         if (matcher.find()) {
-            this.errorLine = Integer.parseInt(matcher.group(2))-1;
-            this.error = matcher.group(3);
+            errorLine = Integer.parseInt(matcher.group(2))-1;
+            errorMsg = "("+errorLine+")"+matcher.group(3);
         } else errorLine = 0;
     }
 
@@ -41,7 +41,7 @@ public class CompileResult {
     }
 
     public String getError() {
-        return error;
+        return errorMsg;
     }
 
     public int getErrorLine() {

@@ -5,6 +5,7 @@ precision mediump float;
 uniform float time;
 uniform vec2 mouse;
 uniform vec2 resolution;
+uniform mat4 eye;
 
 #define PI 3.14159265359
 #define DEG2RAD (PI/180.0)
@@ -227,13 +228,17 @@ void main( void ) {
 
 	vec2 pos = (gl_FragCoord.xy*2.0 - resolution.xy) / resolution.y;
 	vec3 camPos = vec3(5.0*cos(time*0.1), 0.5*sin(time*0.2), 5.0*sin(time*0.1));
-	vec3 camDir = normalize(camPos);
-	vec3 camUp = normalize( vec3(0.0, 1.0+cos(time*0.1)*0.75, sin(time*0.1)*0.75) );
-	camUp  = axis_rotation_matrix33(cross(camDir, camUp), 90.0*DEG2RAD)*camDir;
+	//vec3 camDir = normalize(camPos);
+	//vec3 camUp = normalize( vec3(0.0, 1.0+cos(time*0.1)*0.75, sin(time*0.1)*0.75) );
+	//camUp  = axis_rotation_matrix33(cross(camDir, camUp), 90.0*DEG2RAD)*camDir;
 
-	vec3 camSide = cross(camDir, camUp);
+	//vec3 camSide = cross(camDir, camUp);
 	float fovy = 60.0;
 
+    vec3 camDir = eye[2].xyz;
+    vec3 camUp = eye[1].xyz;
+    vec3 camSide = eye[0].xyz;
+    camPos += eye[3].xyz;
 	vec3 rayDir = normalize(camSide*-pos.x + camUp*-pos.y + camDir*1.0/tan(fovy*0.5*DEG2RAD));
 	vec3 ray = camPos;
 	float m = 0.0;

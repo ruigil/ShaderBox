@@ -4,13 +4,13 @@ precision highp float;
 uniform float time;
 
 // touch position in normalized coordinates 0,1
-uniform vec2 touch;
+uniform vec2 mouse;
 
 // resolution in pixels
 uniform vec2 resolution;
 
 //rotation and translation matrix of eye in camera space
-uniform mat4 camera;
+uniform mat4 eye;
 
 #define eps 0.001
 #define pi 3.1415
@@ -22,11 +22,6 @@ struct Ray {
   vec3 normal;
   vec3 view;
   float penumbra;
-};
-
-struct Camera {
-  vec3 eye;
-  vec3 lookat;
 };
 
 float plane(vec3 position) {

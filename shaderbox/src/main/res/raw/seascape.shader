@@ -7,7 +7,7 @@ precision highp float;
 uniform float time;
 
 // normalized mouse position
-uniform vec2 touch;
+uniform vec2 mouse;
 
 // resolution in pixels
 uniform vec2 resolution;
@@ -174,7 +174,7 @@ void main() {
 	vec2 uv = gl_FragCoord.xy / resolution.xy;
     uv = uv * 2.0 - 1.0;
     uv.x *= resolution.x / resolution.y;
-    float atime = time * 0.3 + touch.x*0.01;
+    float atime = time * 0.3 + mouse.x*0.01;
 
     // ray
     vec3 ang = vec3(sin(atime*3.0)*0.1,sin(time)*0.2+0.3,atime);
