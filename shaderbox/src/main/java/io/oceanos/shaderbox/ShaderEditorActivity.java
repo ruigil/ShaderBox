@@ -129,6 +129,11 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
         setSymbolListener(R.id.action_equal, '=');
         setSymbolListener(R.id.action_spo, '[');
         setSymbolListener(R.id.action_spc, ']');
+        setSymbolListener(R.id.action_and, '&');
+        setSymbolListener(R.id.action_or, '|');
+        setSymbolListener(R.id.action_greater, '>');
+        setSymbolListener(R.id.action_lesser, '<');
+        setSymbolListener(R.id.action_cardinal, '#');
 
 
         final Handler uiHandler = new Handler(this);
@@ -319,6 +324,20 @@ public class ShaderEditorActivity extends FragmentActivity implements ShaderDial
                 if (shader.getPreviewMode() == 1)
                     shaderView.setRenderMode(ShaderGLView.RENDERMODE_CONTINUOUSLY);
                 Toast.makeText(getBaseContext(),R.string.shader_saved,Toast.LENGTH_SHORT).show();
+                return true;
+
+            case ShaderRenderer.LOW_FPS_RESULT:
+                int res = shader.getResolution();
+                if (res != 16) {
+                    shader.setResolution(res << 1);
+                    shaderView.queueEvent(resetShader);
+                    Toast.makeText(getBaseContext(),R.string.low_fps_auto_scale,Toast.LENGTH_LONG).show();
+                } else {
+                    shader.setPreviewMode(0);
+                    shaderView.setRenderMode(ShaderGLView.RENDERMODE_WHEN_DIRTY);
+                    Toast.makeText(getBaseContext(),R.string.low_fps_preview_disabled,Toast.LENGTH_LONG).show();
+                }
+
                 return true;
         }
         return false;

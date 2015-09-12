@@ -42,7 +42,7 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 	public static final String COLUMN_MODIFIED = "modified";
 
 	private static final String DATABASE_NAME = "shaderbox.db";
-	private static final int DATABASE_VERSION = 23;
+	private static final int DATABASE_VERSION = 30;
 	private Context context = null;
 
 	// Database creation sql statement
@@ -115,7 +115,7 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 				Shader.loadStringResource(context,R.raw.seascape),
                 0,
 				1,
-				4,
+				1,
 				Shader.loadByteResource(context,R.drawable.new_shader),
                 time,
                 time
@@ -135,7 +135,7 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 				Shader.loadStringResource(context,R.raw.fractal3d),
 				0,
 				1,
-				2,
+				1,
 				Shader.loadByteResource(context,R.drawable.new_shader),
 				time,
 				time
@@ -145,7 +145,7 @@ public class ShaderDatabase extends SQLiteOpenHelper {
 				Shader.loadStringResource(context,R.raw.frozen),
 				0,
 				1,
-				4,
+				1,
 				Shader.loadByteResource(context,R.drawable.new_shader),
 				time,
 				time

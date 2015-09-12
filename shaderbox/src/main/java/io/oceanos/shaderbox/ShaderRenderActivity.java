@@ -16,9 +16,13 @@
 
 package io.oceanos.shaderbox;
 
+import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import com.google.vrtoolkit.cardboard.CardboardActivity;
 import io.oceanos.shaderbox.database.Shader;
@@ -27,6 +31,7 @@ import io.oceanos.shaderbox.opengl.ShaderRenderer;
 
 public class ShaderRenderActivity extends CardboardActivity {
     private ShaderGLView shaderView;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class ShaderRenderActivity extends CardboardActivity {
         ShaderRenderer renderer = new ShaderRenderer(shader,new Handler());
         shaderView.setRenderer(renderer);
         shaderView.setVRModeEnabled(shader.getVrMode() == 1);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -52,6 +58,19 @@ public class ShaderRenderActivity extends CardboardActivity {
     protected void onResume() {
         super.onResume();
         shaderView.onResume();
+    }
+
+    @Override
+    public void onCardboardTrigger() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        shaderView.onTouchEvent(
+                MotionEvent.obtain(0,0,
+                        MotionEvent.ACTION_DOWN,
+                        size.x,size.y,
+                        MotionEvent.AXIS_LTRIGGER));
+        vibrator.vibrate(50);
     }
 
 

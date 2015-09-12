@@ -1,25 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--
+*    Copyright 2015 Rui Gil
+*
+*    Licensed under the Apache License, Version 2.0 (the "License");
+*    you may not use this file except in compliance with the License.
+*    You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+*    Unless required by applicable law or agreed to in writing, software
+*    distributed under the License is distributed on an "AS IS" BASIS,
+*    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*    See the License for the specific language governing permissions and
+*    limitations under the License.
+-->
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView">
-    <LinearLayout android:orientation="vertical"
+    <RelativeLayout android:orientation="vertical"
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:padding="@dimen/margin_medium">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/shader_name"
-                android:id="@+id/name_label"/>
-
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/name"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -27,13 +29,17 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/view_cardboard"
                 android:id="@+id/textView2"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:elegantTextHeight="true"/>
+                android:layout_below="@+id/name"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
         <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/vr_mode"/>
+                android:id="@+id/vr_mode"
+                android:layout_toRightOf="@+id/textView2"
+                android:layout_below="@+id/name"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -41,13 +47,17 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/render_preview"
                 android:id="@+id/previewtext"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:elegantTextHeight="true"/>
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
         <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/preview"/>
+                android:id="@+id/preview"
+                android:layout_below="@+id/textView2"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/previewtext"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -56,34 +66,28 @@
                 android:text="@string/resolution"
                 android:id="@+id/textView3"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:elegantTextHeight="true"/>
+                android:layout_below="@+id/previewtext"/>
 
-        <RadioGroup
+
+        <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|left"
-                android:id="@+id/resolution">
+                android:id="@+id/resolution_factor"
+                android:layout_below="@+id/previewtext"
+                android:layout_toRightOf="@+id/textView3"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:entries="@array/resolution_entries"
+                />
 
-            <RadioButton
-                    android:layout_width="wrap_content"
+        <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/res_high"
-                    android:id="@+id/high_res"/>
+                    android:id="@+id/name"
+                    android:hint="@string/shader_name"
+                    android:layout_marginTop="@dimen/margin_medium"/>
 
-            <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/res_medium"
-                    android:id="@+id/medium_res"/>
-
-            <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/res_low"
-                    android:id="@+id/low_res"/>
-
-        </RadioGroup>
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>
 
 

@@ -1,0 +1,51 @@
+<!--
+*    Copyright 2015 Rui Gil
+*
+*    Licensed under the Apache License, Version 2.0 (the "License");
+*    you may not use this file except in compliance with the License.
+*    You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+*    Unless required by applicable law or agreed to in writing, software
+*    distributed under the License is distributed on an "AS IS" BASIS,
+*    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*    See the License for the specific language governing permissions and
+*    limitations under the License.
+-->
+<resources>
+    <string name="app_name">ShaderBox</string>
+    <string name="about_dialog_content">Open Source Shader Editor\n &#169; 2015 Rui Gil\n Apache 2.0 Licence\n github.com/ruigil/shaderbox\n</string>
+    <string name="about_dialog_title">ShaderBox</string>
+    <string name="action_about">Á propos</string>
+    <string name="action_new_shader">Nouveau shader</string>
+    <string name="action_settings">Configuration</string>
+    <string name="cancel">Annuler</string>
+    <string name="confirm_delete">Supprimer le shader</string>
+    <string name="confirm_delete_dialog">Êtes-vous sûr de vouloir supprimer le shader?</string>
+    <string name="copy">Copier comme nouveau</string>
+    <string name="delete">Supprimer le shader</string>
+    <string name="pref_compile_save">Compilation en temps réel</string>
+    <string name="pref_compile_save_description">Si cette option n\'est pas choisi, la compilation se fait au moment de l\'enregistrement</string>
+    <string name="pref_compiler">Compilation</string>
+    <string name="pref_editor">Editeur</string>
+    <string name="pref_editor_opacity">Opacité du fond</string>
+    <string name="pref_editor_text_size">Taille du texte</string>
+    <string name="properties">Propriétés</string>
+    <string name="render_preview">Prévisualisation</string>
+    <string name="res_high">Haute</string>
+    <string name="res_low">Basse</string>
+    <string name="res_medium">Moyenne</string>
+    <string name="resolution">Résolution</string>
+    <string name="save">Enregistrer</string>
+    <string name="shader_copied">Le Shader à été copié comme un nouveau</string>
+    <string name="shader_deleted">Le shader à été supprimé</string>
+    <string name="shader_name">Nom du shader</string>
+    <string name="shader_saved">Le shader à été enregistré</string>
+    <string name="share">Partager le shader</string>
+    <string name="view">Voir</string>
+    <string name="view_cardboard">Voir avec Google Cardboard</string>
+    <string name="action_share_shader">Partager shader</string>
+    <string name="low_fps_preview_disabled">FPS bas, la prévisualisation a été desactivé</string>
+    <string name="low_fps_auto_scale">FPS bas, la résolution a été reduite </string>
+</resources>

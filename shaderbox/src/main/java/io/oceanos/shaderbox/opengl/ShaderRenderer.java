@@ -37,6 +37,7 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
     public static final int FPS_RESULT = 0;
     public static final int COMPILE_RESULT = 1;
     public static final int THUMB_RESULT = 2;
+    public static final int LOW_FPS_RESULT = 3;
 
     public static final String VERTEX_SHADER =
             "attribute vec2 position; void main() { gl_Position = vec4( position, 0., 1. ); } ";
@@ -76,6 +77,7 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
     private int width,height;
     private float[] eyeView;
     private Handler uiHandler;
+    private boolean resetted = false;
 
     public ShaderRenderer(Shader shader, Handler uiHandler) {
         this.shader = shader;
@@ -150,6 +152,16 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
 
     @Override
     public void onFinishFrame(Viewport viewport) {
+        if (resetted) {
+            long elapsedTime = SystemClock.elapsedRealtime()-startTime;
+            if (elapsedTime>2000) {
+                float fps = frameCount*1000f/elapsedTime;
+                if (fps < 10f) {
+                    uiHandler.sendEmptyMessage(LOW_FPS_RESULT);
+                    resetted = false;
+                }
+            }
+        }
     }
 
     @Override
@@ -214,8 +226,8 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
 
         // config texture parameters
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, offscreenTextureId);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_NEAREST);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_NEAREST);
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
         GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, (int) resolution[0], (int) resolution[1], 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);
@@ -233,6 +245,7 @@ public class ShaderRenderer implements CardboardView.StereoRenderer {
         // reset fps
         startTime = SystemClock.elapsedRealtime();
         frameCount = 0;
+        resetted = true;
     }
 
     public void onTouch( float x, float y ) {

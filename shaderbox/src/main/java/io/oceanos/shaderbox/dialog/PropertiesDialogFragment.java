@@ -20,14 +20,20 @@ package io.oceanos.shaderbox.dialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.res.TypedArray;
 import android.support.v4.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import io.oceanos.shaderbox.MainActivity;
 import io.oceanos.shaderbox.R;
 import io.oceanos.shaderbox.database.Shader;
+
+import java.util.BitSet;
 
 public class PropertiesDialogFragment extends DialogFragment {
 
@@ -42,12 +48,19 @@ public class PropertiesDialogFragment extends DialogFragment {
         final EditText nameView = (EditText)view.findViewById(R.id.name);
         Switch vrMode = (Switch) view.findViewById(R.id.vr_mode);
         Switch preview = (Switch) view.findViewById(R.id.preview);
-        RadioGroup resolutionRadio = (RadioGroup)view.findViewById(R.id.resolution);
+        Spinner resolutionFactor = (Spinner)view.findViewById(R.id.resolution_factor);
+        resolutionFactor.setSelection(Integer.numberOfTrailingZeros(shader.getResolution()));
+        resolutionFactor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+                shader.setResolution(1 << pos);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
 
         nameView.setText(shader.getName());
-        int resid = shader.getResolution() == 1 ? R.id.high_res :
-                    shader.getResolution() == 2 ? R.id.medium_res : R.id.low_res;
-        resolutionRadio.check(resid);
 
         vrMode.setChecked(shader.getVrMode() == 1);
         vrMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -63,18 +76,7 @@ public class PropertiesDialogFragment extends DialogFragment {
             }
         });
 
-        resolutionRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch(i) {
-                    case R.id.high_res: shader.setResolution(1); break;
-                    case R.id.medium_res: shader.setResolution(2); break;
-                    case R.id.low_res: shader.setResolution(4); break;
-                }
-            }
-        });
-
-        builder.setTitle("Properties")
+        builder.setTitle(R.string.properties)
                 .setView(view)
                 .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -102,5 +104,7 @@ public class PropertiesDialogFragment extends DialogFragment {
             throw new ClassCastException(activity.toString() + " must implement ShaderDialogListener");
         }
     }
+
+
 
 }

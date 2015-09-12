@@ -13,9 +13,11 @@
 *    See the License for the specific language governing permissions and
 *    limitations under the License.
 -->
+<resources>
 
-<io.oceanos.shaderbox.opengl.ShaderGLView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/render_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+    <!-- Activity themes -->
+    <style name="Theme.Base" parent="android:Theme.Material">
+
+    </style>
+
+</resources>
